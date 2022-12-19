@@ -12,6 +12,7 @@ namespace TestProjectSwagLabs.Tests
     {
         LoginPage loginPage;
         ProductPage productPage;
+        CartPage cartPage;
 
         [SetUp]
         public void Setup()
@@ -19,6 +20,7 @@ namespace TestProjectSwagLabs.Tests
             WebDrivers.Initialize();
             loginPage = new LoginPage();
             productPage = new ProductPage();
+            cartPage = new CartPage();
 
         }
         [TearDown]
@@ -35,7 +37,7 @@ namespace TestProjectSwagLabs.Tests
             Assert.That(productPage.SortByPrice.Displayed);
         }
         [Test]
-        public void TC01_AddTwoProductsInCart_ShouldDisplayTwoProducts()
+        public void TC02_AddTwoProductsInCart_ShouldDisplayTwoProducts()
         {
             loginPage.LoginOnPage("standard_user", "secret_sauce");
             productPage.AddOnesie.Click();
@@ -43,5 +45,6 @@ namespace TestProjectSwagLabs.Tests
             productPage.AddBoltTShirt.Click();
             Assert.That(productPage.Cart.Text, Is.EqualTo("3"));
         }
+        
     }
 }

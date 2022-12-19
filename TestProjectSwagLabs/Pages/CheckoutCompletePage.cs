@@ -8,9 +8,9 @@ using TestProjectSwagLabs.WebDriver;
 
 namespace TestProjectSwagLabs.Pages
 {
-    public class CartPage
+    public class CheckoutCompletePage
     {
-        public IWebDriver driver = WebDrivers.Instance;
-        public IWebElement CheckoutButton => driver.FindElement(By.Id("checkout"));
+        private IWebDriver driver = WebDrivers.Instance;
+        public IWebElement OrderFinished => driver.FindElement(By.ClassName("complete-header"));
     }
 }
