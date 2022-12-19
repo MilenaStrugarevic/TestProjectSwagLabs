@@ -1,0 +1,17 @@
+﻿using OpenQA.Selenium;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using TestProjectSwagLabs.WebDriver;
+
+namespace TestProjectSwagLabs.Pages
+{
+    public class CheckoutOverviewPage
+    {
+        private IWebDriver driver = WebDrivers.Instance;
+        public IWebElement TotalPrice => driver.FindElement(By.ClassName("summary_total_label"));
+        public IWebElement FinishButton => driver.FindElement(By.Id("finish"));
+    }
+}

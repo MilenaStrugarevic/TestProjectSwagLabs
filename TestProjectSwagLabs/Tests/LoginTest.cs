@@ -45,10 +45,17 @@ namespace TestProjectSwagLabs.Tests
         }
 
         [Test]
-        public void TC04_LoginWithNoUserNameAndNoPassword_ShouldNotBeLoggedIn()
+        public void TC04_LoginWithInvalidUserNameAndInvalidPassword_ShouldNotBeLoggedIn()
         {
-            loginPage.LoginOnPage(" ", " ");
+            loginPage.LoginOnPage("notvaliduser", "notvalidpassword");
             Assert.That(loginPage.Message.Text, Is.EqualTo("Epic sadface: Username and password do not match any user in this service"));
+        }
+
+        [Test]
+        public void TC05_LoginWithNoUserNameAndNoPassword_ShouldNotBeLoggedIn()
+        {
+            loginPage.LoginButton.Submit();
+            Assert.That(loginPage.Message.Text, Is.EqualTo("Epic sadface: Username is required"));
         }
     }
 }
