@@ -37,7 +37,7 @@ namespace TestProjectSwagLabs.Tests
             Assert.That(productPage.SortByPrice.Displayed);
         }
         [Test]
-        public void TC02_AddTwoProductsInCart_ShouldDisplayTwoProducts()
+        public void TC02_Add3ProductsInCart_ShouldDisplay3Products()
         {
             loginPage.LoginOnPage("standard_user", "secret_sauce");
             productPage.AddOnesie.Click();
@@ -45,6 +45,17 @@ namespace TestProjectSwagLabs.Tests
             productPage.AddBoltTShirt.Click();
             Assert.That(productPage.Cart.Text, Is.EqualTo("3"));
         }
-        
+        [Test]
+        public void TC03_AddAndRemoveTwoProductsInCart_ShouldntDisplayAnyProducts()
+        {
+            loginPage.LoginOnPage("standard_user", "secret_sauce");
+            productPage.AddOnesie.Click();
+            productPage.AddBikeLight.Click();
+            productPage.Cart.Click();
+            cartPage.RemoveOnesie.Click();
+            cartPage.RemoveLabBike.Click();
+            cartPage.ContinueShopping.Click();
+            Assert.That(productPage.Cart.Text, Is.EqualTo(""));
+        }
     }
 }
